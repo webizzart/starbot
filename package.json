@@ -1,0 +1,45 @@
+{
+  "name": "jsx-without-react",
+  "version": "0.1.0",
+  "description": "Experiment with using JSX without React.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p --env production",
+    "dev": "webpack-dev-server --env development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viglucci/jsx-without-react.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/viglucci/jsx-without-react/issues"
+  },
+  "homepage": "https://github.com/viglucci/jsx-without-react#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-syntax-jsx": "^7.2.0",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-jsx-pragmatic": "^1.0.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-primavera": "^1.3.0",
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "h": "^0.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jsx-render": "^1.1.2",
+    "mini-css-extract-plugin": "^1.3.1",
+    "raw-loader": "^2.0.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "styleit-api": "^1.0.15"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "plugins": [
+    [
+      "babel-plugin-jsx-pragmatic",
+      {
+        "import": "dom",
+        "module": "jsx-render"
+      }
+    ]
+  ],
+  "presets": [
+    "babel-preset-primavera",
+    [
+      "@babel/preset-react",
+      {
+        "pragma": "dom"
+      }
+    ]
+  ]
+}

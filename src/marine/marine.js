@@ -60,13 +60,13 @@ export class Marine {
             //Turn
             const opp = this.pos.getY()-y;
             const adj = this.pos.getX()-x;
-            const angle = Math.atan2(opp,adj) * (180 / Math.PI);
+            const angle = Math.atan2(opp,adj) * (180 / Math.PI) ;
             this.destAngle = angle;
 
         }
         this.shoot = (generateShot) => {
             if (this.bulletDelay > 8) {
-                generateShot();
+                generateShot(this);
                 this.bulletDelay = 0;
             }
         }

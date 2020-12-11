@@ -223,7 +223,6 @@ export function startAppManager(component) {
 
                 bullets.splice(bullets.indexOf(b), 1);
                 bulletPool.disposeElement(b);
-
                 continue;
             }
 
@@ -256,15 +255,15 @@ export function startAppManager(component) {
 
                 ctx.save();
                 ctx.translate(_unit.pos.getX() >> 0, _unit.pos.getY() >> 0);
-                ctx.rotate((_unit.angle) * (Math.PI/180));
+                ctx.rotate((_unit.angle) * (Math.PI/180)) ;
 
                 ctx.strokeStyle = '#FFF';
                 ctx.lineWidth = (Math.random() > 0.9) ? 2 : 1;
                 ctx.beginPath();
-                ctx.moveTo(10, 0);
-                ctx.lineTo(-10, -10);
-                ctx.lineTo(-10, 10);
-                ctx.lineTo(10, 0);
+                ctx.moveTo(-10, 0);
+                ctx.lineTo(10, 10);
+                ctx.lineTo(10, -10);
+                ctx.lineTo(-10, 0);
                 ctx.stroke();
                 ctx.closePath();
                 ctx.restore();
@@ -292,28 +291,38 @@ export function startAppManager(component) {
             ctx.strokeStyle = b.color;
 
             ctx.arc(b.pos.getX() >> 0, b.pos.getY() >> 0, b.radius, 0, doublePI);
-            if (Math.random() > 0.4) ctx.stroke();
+            if (Math.random() > .4) ctx.stroke();
             ctx.closePath();
         }
     }
 
-    function generateShot() {
-
-        const _scene = scene.get();
+    function generateShot(_unit) {
+        
         const bullets = bulletsPool.get();
-        Array.from(_scene.clans).forEach(_clan => {
-            Array.from(_clan.units).forEach(_unit => {
-                Array.from(_unit.weapon.bullets).forEach(_bullet => {
-                    var b = _bullet;
-                    b.radius = 1;
-                    b.pos.setX(_unit.pos.getX() + Math.cos(_unit.angle) * 14);
-                    b.pos.setY(_unit.pos.getY() + Math.sin(_unit.angle) * 14);
-                    b.vel.setLength(10);
-                    b.vel.setAngle((_unit.angle) * (Math.PI/180));
-                    bullets[bullets.length] = b;
-                });
-            });
+        Array.from(_unit.weapon.bullets).forEach(_bullet => {
+            const rad = _unit.angle * (Math.PI/180);
+            const b = _bullet;
+            b.radius = 1;
+            b.pos.setX(_unit.pos.getX() + Math.cos(rad) * 14);
+            b.pos.setY(_unit.pos.getY() + Math.sin(rad) * 14);
+            b.vel.setLength(10);
+            b.vel.setAngle(rad+3.2);
+            bullets[bullets.length] = b;
         });
+        // Array.from(_scene.clans).forEach(_clan => {
+        //     Array.from(_clan.units).forEach(_unit => {
+        //         Array.from(_unit.weapon.bullets).forEach(_bullet => {
+        //             const rad = _unit.angle * (Math.PI/180);
+        //             const b = _bullet;
+        //             b.radius = 1;
+        //             b.pos.setX(_unit.pos.getX() + Math.cos(rad) * 14);
+        //             b.pos.setY(_unit.pos.getY() + Math.sin(rad) * 14);
+        //             b.vel.setLength(10);
+        //             b.vel.setAngle(rad);
+        //             bullets[bullets.length] = b;
+        //         });
+        //     }); 
+        // });
 
 
     }
